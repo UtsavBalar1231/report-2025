@@ -63,7 +63,7 @@
 
     \vspace{1.5cm}
 
-    {\LARGE\bfseries INTERNSHIP REPORT}
+    {\LARGE\bfseries Internship Report}
 
     \vspace{1cm}
 
@@ -71,7 +71,7 @@
 
     \vspace{0.5cm}
 
-    {\LARGE\bfseries EDGE AI HARDWARE AND SOFTWARE DEVELOPMENT}
+    {\LARGE\bfseries Edge AI Hardware and Software Development}
 
     \vspace{1cm}
 
@@ -79,7 +79,7 @@
 
     \vspace{0.5cm}
 
-    {\LARGE\bfseries PAMIR AI}
+    {\LARGE\bfseries Pamir AI}
 
     \vspace{0.3cm}
 
@@ -93,7 +93,7 @@
 
     \vspace{0.5cm}
 
-    {\Large\bfseries MASTER OF COMPUTER SCIENCE AND ENGINEERING}
+    {\Large\bfseries Master of Computer Science and Engineering}
 
     \vspace{1cm}
 
@@ -101,17 +101,17 @@
 
     \vspace{0.5cm}
 
-    {\Large\bfseries UTSAV BALAR}
+    {\Large\bfseries Utsav Balar}
 
     {\large Roll No: T24CS003}
 
     \vfill
 
-    {\large\bfseries DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING}
+    {\large\bfseries Department of Computer Science and Engineering}
 
-    {\large\bfseries NATIONAL INSTITUTE OF TECHNOLOGY, MEGHALAYA}
+    {\large\bfseries National Institute of Technology, Meghalaya}
 
-    {\large BIJNI COMPLEX, LAITUMKHRAH, SHILLONG -- 793003}
+    {\large Sohra, Cherrapunji -- 793108}
 
     \vspace{0.5cm}
 
@@ -239,6 +239,8 @@ This report presents the work done during my long-term full-time internship at P
 
 \vspace{0.5cm}
 
+% Actually the major role was to do the complete BSP development for their products, the below mentioned are just a few sub-projects that were essential.
+
 My role as a Linux Kernel and BSP Engineer involved developing custom kernel drivers for various hardware components used in Pamir AI's Distiller product line. The major projects included designing and implementing the SAM (Signal Aggregation Module) protocol for microcontroller communication, developing the Distiller SDK for userspace hardware interaction, and creating a wifi provisioning service for headless devices.
 
 \vspace{0.5cm}
@@ -287,12 +289,11 @@ Kevin Zhang comes from Microsoft's Surface team, where he was part of the core R
 
 Currently, Pamir AI is a small team of approximately 5 people, working on cutting-edge edge AI hardware and software solutions. Despite its small size, the company is making significant strides in bringing AI capabilities to compact, power-efficient devices.
 
-% TODO: Consider adding company logo or team photo here
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{pamirai_logo.png}
-%     \caption{Pamir AI Company Logo}
-% \end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{pamirai_logo.png}
+    \caption{Pamir AI Company Logo}
+\end{figure}
 
 \section{Company Vision and Mission}
 
@@ -317,6 +318,8 @@ Pamir AI has developed three main products in the Distiller series:
 \vspace{0.3cm}
 
 \textbf{Distiller Air:} An ultralightweight AI hardware device with cellular connectivity designed for remote AI applications. This represents the latest evolution in the Distiller product line, optimizing for portability and wireless connectivity.
+
+% TODO: Add three images, one for each product
 
 % TODO: Add product images here
 % \begin{figure}[h]
@@ -444,12 +447,11 @@ The audio codec integration required working with the ALSA (Advanced Linux Sound
 
 The input buttons and LEDs were integrated using the GPIO (General Purpose Input/Output) framework, which was relatively straightforward but required careful attention to device tree configuration.
 
-% TODO: Add hardware architecture diagram here
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{bhv_hardware_architecture.png}
-%     \caption{Distiller BHV Hardware Architecture}
-% \end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{bhv_hardware_architecture.png}
+    \caption{Distiller BHV Hardware Architecture}
+\end{figure}
 
 \section{SAM Protocol Development}
 
@@ -475,12 +477,11 @@ On the Linux side, I wrote a kernel driver that handles the UART communication, 
 
 This project taught me a lot about protocol design, kernel driver development, and the challenges of reliable communication between different processors. It also gave me experience in working at both the firmware level (RP2040) and the kernel level (Linux).
 
-% TODO: Add SAM protocol diagram here
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{sam_protocol_diagram.png}
-%     \caption{SAM Protocol Communication Flow}
-% \end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{sam-protocol-flow.png}
+    \caption{SAM Protocol Communication Flow}
+\end{figure}
 
 \section{Distiller SDK Development}
 
@@ -542,12 +543,11 @@ Implementing this required:
 
 This project taught me about network programming, web development, state management, and the importance of good user experience even in system-level software.
 
-% TODO: Add wifi provisioning flow diagram here
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{wifi_provisioning_flow.png}
-%     \caption{WiFi Provisioning User Flow}
-% \end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wifi_provisioning_flow.png}
+    \caption{WiFi Provisioning User Flow}
+\end{figure}
 
 \section{Additional Projects and Contributions}
 
