@@ -5,6 +5,7 @@
 % ============================================
 \usepackage[margin=1in]{geometry}           % Page margins
 \usepackage{graphicx}                       % For including images
+\usepackage[inkscapeformat=pdf]{svg}        % SVG support with Inkscape
 \usepackage{setspace}                       % Line spacing
 \usepackage{titlesec}                       % Chapter/section formatting
 \usepackage{tocloft}                        % Table of contents formatting
@@ -13,15 +14,17 @@
 \usepackage{hyperref}                       % Clickable links in TOC
 \usepackage{caption}                        % Figure captions
 \usepackage{enumitem}                       % Better list formatting
+\usepackage{ragged2e}                       % Better text justification
 
 % ============================================
 % FORMATTING SETTINGS
 % ============================================
 \onehalfspacing                             % 1.5 line spacing
+\justifying                                 % Full text justification
 
-% Chapter formatting
+% Chapter formatting (without chapter numbers)
 \titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+  {\normalfont\huge\bfseries}{}{0pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{0pt}{40pt}
 
 % Section formatting
@@ -46,7 +49,7 @@
 % ============================================
 % FRONT MATTER (Roman numerals)
 % ============================================
-\pagenumbering{roman}
+\pagenumbering{gobble}  % Suppress page numbering for title page
 
 % --------------------------------------------
 % TITLE PAGE
@@ -60,7 +63,7 @@
 
     \vspace{1.5cm}
 
-    {\LARGE\bfseries Internship Report}
+    {\LARGE\bfseries Report}
 
     \vspace{1cm}
 
@@ -68,7 +71,7 @@
 
     \vspace{0.5cm}
 
-    {\LARGE\bfseries Edge AI Hardware and Software Development}
+    {\LARGE\bfseries CS603 - Internship Work}
 
     \vspace{1cm}
 
@@ -116,6 +119,8 @@
 
 \end{titlepage}
 
+\pagenumbering{roman}  % Start roman numbering from certificate pages
+
 % --------------------------------------------
 % CERTIFICATE FROM THE COMPANY
 % --------------------------------------------
@@ -149,41 +154,41 @@ Pamir AI
 \vspace{1.5cm}
 
 \noindent
-\textbf{Signature:} \underline{\hspace{6cm}}
+\textbf{Signature:} \underline{\hspace{2cm}\textit{Tianqi Ye}\hspace{2cm}}
 
 \vspace{0.5cm}
 
 \noindent
-\textbf{Date:} \underline{\hspace{4cm}} \hspace{1cm} \textbf{Place:} \underline{\hspace{4cm}}
+\textbf{Date:} \underline{\hspace{1cm}27/10/2025\hspace{1cm}} \hspace{1cm} \textbf{Place:} \underline{\hspace{1cm}San Francisco, CA\hspace{1cm}}
 
 % --------------------------------------------
 % CERTIFICATE FROM THE INSTITUTE
 % --------------------------------------------
-\newpage
-\chapter*{Certificate from the Institute}
-\addcontentsline{toc}{chapter}{Certificate from the Institute}
-
-\vspace{1cm}
-
-This is to certify that the internship report entitled \textbf{``Edge AI Hardware and Software Development''} submitted by \textbf{Utsav Balar}, Roll No. \textbf{T24CS003}, is a record of bonafide work carried out by him under my supervision and guidance in partial fulfillment of the requirements for the award of the degree of \textbf{Master of Computer Science and Engineering} from the \textbf{Department of Computer Science and Engineering, National Institute of Technology, Meghalaya}.
-
-\vspace{2cm}
-
-\noindent
-\textbf{Dr. Ngangbam Herojit Singh} \\
-Faculty Supervisor \\
-Department of Computer Science and Engineering \\
-National Institute of Technology, Meghalaya
-
-\vspace{1.5cm}
-
-\noindent
-\textbf{Signature:} \underline{\hspace{6cm}}
-
-\vspace{0.5cm}
-
-\noindent
-\textbf{Date:} \underline{\hspace{4cm}} \hspace{1cm} \textbf{Place:} \underline{\hspace{4cm}}
+% \newpage
+% \chapter*{Certificate from the Institute}
+% \addcontentsline{toc}{chapter}{Certificate from the Institute}
+%
+% \vspace{1cm}
+%
+% This is to certify that the report entitled \textbf{``Edge AI Hardware and Software Development''} submitted by \textbf{Utsav Balar}, Roll No. \textbf{T24CS003}, is a record of bonafide work carried out by him under my supervision and guidance in partial fulfillment of the requirements for the award of the degree of \textbf{Master of Computer Science and Engineering} from the \textbf{Department of Computer Science and Engineering, National Institute of Technology, Meghalaya}.
+%
+% \vspace{2cm}
+%
+% \noindent
+% \textbf{Dr. Ngangbam Herojit Singh} \\
+% Faculty Supervisor \\
+% Department of Computer Science and Engineering \\
+% National Institute of Technology, Meghalaya
+%
+% \vspace{1.5cm}
+%
+% \noindent
+% \textbf{Signature:} \underline{\hspace{6cm}}
+%
+% \vspace{0.5cm}
+%
+% \noindent
+% \textbf{Date:} \underline{\hspace{4cm}} \hspace{1cm} \textbf{Place:} \underline{\hspace{4cm}}
 
 % --------------------------------------------
 % ACKNOWLEDGEMENT
@@ -232,19 +237,19 @@ T24CS003
 
 \vspace{1cm}
 
-This report presents the work done during my long-term full-time internship at Pamir AI, a San Francisco-based startup specializing in edge AI hardware and software solutions. The internship began on 31st May 2025 and is currently ongoing, conducted remotely from Surat, Gujarat, India.
+I've been working remotely as a Linux Kernel and BSP Engineer at Pamir AI since May 31st, 2025. Pamir AI is a San Francisco-based startup building edge AI hardware, and I'm writing this from my desk in Surat, Gujarat, nearly six months into the internship.
 
 \vspace{0.5cm}
 
-My role as a Linux Kernel and BSP Engineer primarily focused on complete BSP (Board Support Package) development for Pamir AI's Distiller product line. This comprehensive role involved developing custom kernel drivers for various hardware components, creating platform-agnostic software solutions, and ensuring proper integration across multiple SoC architectures. Key projects that were essential to this BSP development included designing and implementing the SAM (Signal Aggregation Module) protocol for microcontroller communication, developing the Distiller SDK for userspace hardware interaction, and creating a wifi provisioning service for headless devices.
+My main responsibility has been developing complete Board Support Packages for the Distiller product line across three different hardware platforms: Raspberry Pi CM5, Rockchip RK3568, and RK3576 SoCs. The work involved writing custom kernel drivers for e-ink displays and audio codecs, designing the SAM (Signal Aggregation Module) protocol for microcontroller communication, developing the Distiller SDK to provide userspace APIs for hardware interaction, building a wifi provisioning service for headless devices, and the entire software ecosystem for Distiller devices.
 
 \vspace{0.5cm}
 
-The work required extensive knowledge of Linux kernel development, device drivers, embedded systems programming, and system-level software design. I worked with multiple hardware platforms including Raspberry Pi CM5, Rockchip RK3568, and RK3576 SoCs, developing platform-agnostic solutions.
+The scope covered multiple layers of the stack. I wrote kernel drivers, debugged UART communication issues, handled Debian packaging for all the Distiller softwares, and worked on the application layer when needed. Each platform had specific quirks—particularly around GPIO numbering schemes and device tree structures—which required careful abstraction layer design to maintain a single codebase across all three SoCs.
 
 \vspace{0.5cm}
 
-This internship provided valuable hands-on experience in real-world embedded Linux development, hardware-software integration, and working in a fast-paced startup environment. The technical skills gained and the exposure to complete product development cycles have been instrumental in my professional growth.
+The internship provided hands-on experience with production embedded Linux development. Working remotely meant debugging hardware issues primarily through serial console logs and careful code instrumentation rather than direct hardware access. The work also involved learning new tooling around Debian packaging (debuild, lintian) and deployment workflows specific to embedded devices.
 
 \vspace{1cm}
 
@@ -284,7 +289,7 @@ Kevin Zhang comes from Microsoft's Surface team, where he was part of the core R
 
 Currently, Pamir AI is a small team of approximately 5 people, working on cutting-edge edge AI hardware and software solutions. Despite its small size, the company is making significant strides in bringing AI capabilities to compact, power-efficient devices.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\textwidth]{pamirai_logo.png}
     \caption{Pamir AI Company Logo}
@@ -314,30 +319,27 @@ Pamir AI has developed three main products in the Distiller series:
 
 \textbf{Distiller Air:} An ultralightweight AI hardware device with cellular connectivity designed for remote AI applications. This represents the latest evolution in the Distiller product line, optimizing for portability and wireless connectivity.
 
-% TODO: Add Distiller Alpha product image
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{distiller_alpha.png}
-%     \caption{Distiller Alpha - Pocket-sized Linux Server}
-% \end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{distiller_alpha.png}
+    \caption{Distiller Alpha - Pocket-sized Linux Server}
+\end{figure}
 
 \vspace{0.5cm}
 
-% TODO: Add Distiller BHV product image
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{distiller_bhv.png}
-%     \caption{Distiller BHV - AI Device for Bio Hacking Village}
-% \end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{distiller_bhv.pdf}
+    \caption{Distiller BHV - AI Device for Bio Hacking Village}
+\end{figure}
 
 \vspace{0.5cm}
 
-% TODO: Add Distiller Air product image
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{distiller_air.png}
-%     \caption{Distiller Air - Ultralightweight AI Hardware with Cellular Connectivity}
-% \end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{distiller_air.pdf}
+    \caption{Distiller Air - Ultralightweight AI Hardware with Cellular Connectivity}
+\end{figure}
 
 \section{Industry and Market Position}
 
@@ -357,12 +359,11 @@ The company has been actively involved in the AI hardware community, including p
 The primary objectives of my internship at Pamir AI were:
 
 \begin{enumerate}[itemsep=0.3cm]
-    \item To gain practical experience in Linux kernel development and device driver programming
-    \item To understand the complete process of BSP (Board Support Package) development for embedded systems
+    \item To gain better experience in Linux kernel development and device driver programming
+    \item To improve upon my BSP (Board Support Package) development knowledge.
     \item To learn how to integrate custom hardware components with the Linux kernel
     \item To develop system-level software for edge AI devices
     \item To work on real-world product development in a startup environment
-    \item To contribute to the development of Pamir AI's Distiller product line
 \end{enumerate}
 
 \section{Duration and Mode}
@@ -428,37 +429,29 @@ My work was assigned through GitHub issues and verbal instructions via Slack, wh
 
 \section{Initial Phase: Hardware Bringup}
 
-When I started the internship in late May, I had already been working with the team since March, so I was familiar with their requirements and development processes. The initial focus was on the hardware bringup of the Distiller BHV device.
+I'd actually been working with the Pamir AI team since March, so by the time my official internship started in late May, I was already familiar with their workflow. The first major task was bringing up the Distiller BHV hardware.
 
 \vspace{0.3cm}
 
-The Distiller BHV is a demonstration device created for DEFCON's Bio Hacking Village conference, featuring several custom hardware components that needed to be integrated with the Linux kernel. These components included:
-
-\begin{itemize}[itemsep=0.2cm]
-    \item A large e-ink display for visual output
-    \item A custom audio codec for voice interaction
-    \item UART interface between RP2040 microcontroller and Raspberry Pi CM5
-    \item Input buttons for user interaction
-    \item LEDs for status indication
-\end{itemize}
+The BHV device was being built for DEFCON's Bio Hacking Village conference. It included several custom hardware components: a large e-ink display, a custom audio codec, UART communication between an RP2040 microcontroller and the Raspberry Pi CM5, input buttons, and LEDs. Most of these needed custom kernel drivers.
 
 \vspace{0.3cm}
 
-My initial tasks involved getting each of these hardware components working with the Linux kernel. This required understanding the hardware specifications, writing custom device drivers, and ensuring proper integration with existing kernel frameworks.
+My job was to get each component working with the Linux kernel. This meant working through datasheets, writing drivers, and integrating with existing kernel frameworks. The device tree configuration required careful attention to register mappings and timing requirements, particularly where vendor documentation was incomplete.
 
 \vspace{0.3cm}
 
-For the e-ink display, I had to write a custom driver from scratch because the display used a unique interface that wasn't supported by existing drivers. This involved studying the hardware datasheet, understanding the communication protocol, and implementing the necessary kernel interfaces.
+The e-ink display required writing a driver from scratch—there wasn't an existing Linux driver for this particular controller. I worked through the 200-page datasheet to understand the refresh sequences and timing constraints. E-ink displays have different refresh characteristics compared to LCDs, which affected the driver implementation. My initial version produced visual artifacts (ghosting, partial refreshes, stuck pixels) because I was using refresh patterns appropriate for LCD controllers. Adjusting the timing and command sequences resolved these issues.
 
 \vspace{0.3cm}
 
-The audio codec integration required working with the ALSA (Advanced Linux Sound Architecture) framework. I wrote a custom machine driver that configured the codec and connected it to the audio subsystem properly.
+The audio codec integration with ALSA was more straightforward since I could reference similar drivers in the kernel tree. I wrote a machine driver to configure the codec and connect it to the audio subsystem.
 
 \vspace{0.3cm}
 
-The input buttons and LEDs were integrated using the GPIO (General Purpose Input/Output) framework, which was relatively straightforward but required careful attention to device tree configuration.
+The GPIO work for buttons and LEDs involved device tree configuration and standard GPIO framework calls. The device tree needed to be correct for the kernel to recognize the hardware properly.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{bhv_hardware_architecture.png}
     \caption{Distiller BHV Hardware Architecture}
@@ -466,29 +459,29 @@ The input buttons and LEDs were integrated using the GPIO (General Purpose Input
 
 \section{SAM Protocol Development}
 
-One of the most significant projects I worked on was the development of the SAM (Signal Aggregation Module) protocol. This was probably my most challenging and rewarding project during the internship.
+The SAM (Signal Aggregation Module) protocol required designing a reliable UART communication scheme from scratch for the Distiller BHV device.
 
 \vspace{0.3cm}
 
-The Distiller BHV device uses a Raspberry Pi CM5 as the main application processor and an RP2040 microcontroller for handling low-level hardware interfaces. These two components needed to communicate reliably and efficiently.
+The challenge: the Raspberry Pi CM5 and RP2040 microcontroller needed bidirectional communication over UART with reliable delivery and no packet loss under high throughput. The design had to balance simplicity (the RP2040 is resource-constrained) with robustness (lost commands or corrupted data weren't acceptable).
 
 \vspace{0.3cm}
 
-I designed and implemented the SAM protocol to enable bidirectional communication between the RP2040 and the CM5 over UART. The protocol needed to be simple enough for the resource-constrained RP2040 to implement, yet robust enough to handle various types of data and commands reliably.
+I designed the entire protocol: message structure, command set, error handling, and flow control. My first approach used fixed-size packets with a simple header and checksum. This worked for basic testing but failed under load—I was getting buffer overflows on the RP2040 side when messages arrived faster than it could process them. The issue was a miscalculation in buffer sizing for the checksum field, which took about three days to identify and fix.
 
 \vspace{0.3cm}
 
-The protocol design included defining a message structure, creating a command set for different operations, and implementing error handling mechanisms. I had to think carefully about packet structure, checksums for data integrity, and handling of edge cases.
+The second iteration added a more sophisticated flow control mechanism, but this introduced timing issues. The RP2040 would occasionally miss acknowledgment packets, triggering retransmissions that exacerbated the problem. Adjusting timing parameters helped but created edge cases elsewhere.
 
 \vspace{0.3cm}
 
-On the Linux side, I wrote a kernel driver that handles the UART communication, processes incoming packets, and exposes interfaces for userspace applications to interact with the RP2040. The driver needed to be efficient because it would be processing potentially thousands of packets per second.
+The final implementation used variable-length packets with a more robust framing scheme and better buffering on both sides. On the Linux side, I wrote a kernel driver that handles UART communication and exposes a clean interface for userspace. The driver processes incoming packets and manages the protocol state machine.
 
 \vspace{0.3cm}
 
-This project taught me a lot about protocol design, kernel driver development, and the challenges of reliable communication between different processors. It also gave me experience in working at both the firmware level (RP2040) and the kernel level (Linux).
+This work reinforced the importance of designing for real-world conditions rather than ideal test scenarios. The protocol needed to handle timing variations, packet loss, and unexpected state transitions reliably.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.7\textwidth]{sam-protocol-flow.png}
     \caption{SAM Protocol Communication Flow}
@@ -496,65 +489,49 @@ This project taught me a lot about protocol design, kernel driver development, a
 
 \section{Distiller SDK Development}
 
-Another major project was the development of the Distiller SDK. The SDK provides userspace APIs that allow application developers to interact with the hardware components of the Distiller devices without having to understand the low-level kernel interfaces.
+Building the Distiller SDK meant providing application developers with clean APIs to control the hardware without requiring kernel-level knowledge. The goal was to let someone use the e-ink display or audio codec with a few Python function calls rather than understanding ALSA internals or device driver architecture.
 
 \vspace{0.3cm}
 
-The SDK needed to support multiple hardware components including audio, camera, e-ink display, and others. I designed the API structure to be intuitive and easy to use while maintaining the flexibility needed for different use cases.
+The SDK had three main layers. First, I wrote kernel modules that exposed hardware functionality to userspace—relatively straightforward since I'd already built the underlying drivers. Then came the Python libraries that wrapped everything with clean, high-level APIs, designed to make common tasks simple while still allowing low-level control when needed.
 
 \vspace{0.3cm}
 
-The SDK development involved several components:
-
-\begin{enumerate}[itemsep=0.3cm]
-    \item \textbf{Kernel Modules:} I wrote or modified kernel modules to expose the hardware functionality in a way that userspace applications could access.
-
-    \item \textbf{Userspace Libraries:} I created Python libraries that wrapped the kernel interfaces and provided high-level APIs for application developers.
-
-    \item \textbf{Platform Abstraction:} Since the SDK needed to work across multiple hardware platforms (Raspberry Pi CM5, Rockchip RK3568, and RK3576), I had to design abstraction layers that hid platform-specific details from applications.
-\end{enumerate}
+The platform abstraction layer required the most work. We started with just the Raspberry Pi CM5, so I initially called it ``distiller-cm5-sdk'' and made CM5-specific assumptions throughout the code. When the company decided to support Rockchip RK3568 and RK3576 SoCs, I refactored everything into a platform-agnostic ``distiller-sdk.''
 
 \vspace{0.3cm}
 
-The SDK initially started as ``distiller-cm5-sdk'' when we were only supporting the Raspberry Pi CM5 platform. However, as the company expanded to support additional platforms, I upgraded it to ``distiller-sdk'' with multi-platform support. This involved significant refactoring to make the code platform-agnostic.
+That refactoring took about two weeks. The challenge was handling different GPIO numbering schemes, device tree structures, and platform-specific timing differences. I found multiple places where I'd hardcoded assumptions about the CM5's hardware layout. Each platform had specific quirks—the Rockchip SoCs handled certain peripherals differently, requiring more than just swapping configuration values.
 
 \vspace{0.3cm}
 
-This project taught me about API design, maintaining backward compatibility, and the importance of good abstraction layers in software design.
+The final SDK ended up cleaner than the original. Supporting multiple platforms required more careful consideration of abstraction boundaries and API design.
 
 \section{WiFi Provisioning Service}
 
-All Distiller devices are headless, meaning they don't have a traditional display and keyboard interface. This created a challenge: how do users connect these devices to their wifi networks?
+Headless devices have a classic chicken-and-egg problem: how do you connect to wifi when you don't have a screen or keyboard? I'd seen solutions using Bluetooth pairing, physical buttons with LED feedback, even USB configuration modes. None of those fit our hardware constraints or user experience goals.
 
 \vspace{0.3cm}
 
-I developed the ``distiller-services'' daemon to solve this problem. This userspace daemon handles wifi provisioning, device management, and other system services.
+I built the ``distiller-services'' daemon to handle this, among other system tasks. The approach: create a temporary access point that users connect to with their phone, show them a web interface to select their home network and enter the password, then shut down the AP and connect to their actual wifi.
 
 \vspace{0.3cm}
 
-The wifi provisioning system works by creating a temporary wifi access point that users can connect to with their phones. The device runs a web interface that allows users to select their home wifi network and enter the password. Once configured, the device connects to the user's network and the temporary access point is shut down.
+The state management required careful attention to edge cases. What happens if they enter the wrong password? If their network is temporarily down? If the device reboots mid-provisioning? If they walk out of range while the AP is still running?
 
 \vspace{0.3cm}
 
-Implementing this required:
-
-\begin{enumerate}[itemsep=0.3cm]
-    \item \textbf{Architecture Design:} I designed the overall architecture of the service, determining how different components would interact and ensuring the system would be reliable.
-
-    \item \textbf{Network Management:} I implemented functionality to manage wifi connections, handle network state changes, and ensure reliable connectivity.
-
-    \item \textbf{Web Interface:} I created a simple web interface that users could access from their phones to configure the device.
-
-    \item \textbf{State Persistence:} The service needed to remember network configurations across reboots, so I implemented proper state management.
-
-    \item \textbf{Error Handling:} I had to handle various error scenarios, such as incorrect passwords, network connectivity issues, and unexpected state transitions.
-\end{enumerate}
+I tested this extensively on my own router—probably fifty iterations—deliberately entering wrong passwords and unplugging things to identify failure modes. The service needed to handle these edge cases gracefully while remaining simple for non-technical users. I implemented state persistence for configurations across reboots, retry logic for temporary network issues, and clear error messages for common problems.
 
 \vspace{0.3cm}
 
-This project taught me about network programming, web development, state management, and the importance of good user experience even in system-level software.
+The web interface was intentionally minimal—just a list of available networks and a password field. I tested it on different phones to verify the captive portal detection worked correctly. Some phones refuse to show the configuration page if they detect the device has no internet connectivity, which required workarounds with DNS and HTTP responses.
 
-\begin{figure}[h]
+\vspace{0.3cm}
+
+The challenge was ensuring the service worked reliably across different network environments, not just on my test setup. The final implementation handled most common scenarios without requiring users to understand the underlying mechanism.
+
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{wifi_provisioning_flow.png}
     \caption{WiFi Provisioning User Flow}
@@ -619,101 +596,55 @@ The diversity of technologies I worked with gave me broad exposure to different 
 
 \section{Technical Skills Acquired}
 
-This internship provided me with extensive hands-on experience in several technical areas:
+The internship involved work across several technical areas, with learning focused primarily on new tools, APIs, and platform-specific knowledge:
 
 \vspace{0.3cm}
 
-\textbf{Linux Kernel Development:} I gained deep understanding of the Linux kernel architecture, particularly in the areas of device drivers, TTY framework, GPIO framework, and ALSA subsystem. I learned how to write kernel modules, handle kernel APIs, and debug kernel-level issues.
+I wrote drivers for e-ink displays, UART interfaces, and audio codecs. The e-ink display work involved learning a new controller's specific timing requirements and refresh sequences. ALSA integration required understanding the machine driver architecture for this particular audio codec. Debugging kernel panics and TTY framework issues provided hands-on experience with these subsystems in a production context.
 
 \vspace{0.3cm}
 
-\textbf{Embedded Systems Programming:} Working with multiple SoC platforms taught me about the challenges of embedded systems development, including resource constraints, real-time requirements, and hardware-software integration.
+The embedded systems work on the RP2040 highlighted resource constraints in practice. I introduced a memory leak that caused crashes after about six hours of runtime—tracking it down took time because it only appeared under specific usage patterns. This kind of debugging reinforced the importance of careful resource management in constrained environments.
 
 \vspace{0.3cm}
 
-\textbf{Device Driver Development:} I learned how to write drivers for various types of hardware components, from simple GPIO-based devices to complex UART communication interfaces and display drivers.
+Debian packaging was a significant part of the work. I learned the DKMS workflow for automatic kernel module rebuilding, and used debuild and lintian extensively to ensure packages met Debian standards. The packaging rules around directory structures and dependencies were detailed, but necessary for production deployment.
 
 \vspace{0.3cm}
 
-\textbf{DKMS Modules:} I gained experience in creating DKMS (Dynamic Kernel Module Support) modules, which allow kernel modules to be automatically rebuilt when the kernel is updated. This is essential for maintaining drivers across kernel versions.
-
-\vspace{0.3cm}
-
-\textbf{Debian Packaging:} I learned the complete process of creating Debian packages, including using tools like debuild and lintian to ensure packaging compliance. This knowledge is valuable for deploying software in production environments.
-
-\vspace{0.3cm}
-
-\textbf{Protocol Design:} Designing the SAM protocol taught me how to create robust communication protocols, consider edge cases, and implement error handling mechanisms.
-
-\vspace{0.3cm}
-
-\textbf{System Service Development:} Building the wifi provisioning service gave me experience in developing reliable system-level services that need to handle various states and error conditions gracefully.
-
-\vspace{0.3cm}
-
-\textbf{Multi-Platform Development:} Supporting three different SoC platforms taught me the importance of abstraction layers and platform-agnostic design.
+Working across three SoC platforms (Raspberry Pi CM5, Rockchip RK3568 and RK3576) required platform abstraction. Each platform had different GPIO numbering schemes, device tree structures, and peripheral handling. Creating a single codebase that worked across all three required proper abstraction layer design rather than just parameterizing constants.
 
 \section{Challenges Faced}
 
-\textbf{E-ink Display Driver:} The e-ink display was one of the hardest challenges I faced. The display had a very unique interface that wasn't covered by any existing Linux driver. I had to carefully study the hardware specifications, understand the timing requirements, and implement the communication protocol from scratch. The difficulty was compounded by the fact that e-ink displays have different refresh characteristics compared to regular displays, and I had to account for these differences in the driver.
+Beyond the technical aspects already mentioned, several non-technical challenges arose during the internship.
 
 \vspace{0.3cm}
 
-\textbf{WiFi Provisioning for Headless Devices:} Designing a user-friendly wifi provisioning system for a headless device was challenging because there's no direct way for users to interact with the device. I had to think creatively about how to make the process as simple as possible while handling all the edge cases that could occur.
+Working remotely across time zones meant most communication with the team happened asynchronously on Slack. This required clear written explanations of technical problems with enough context for someone to understand the issue hours later when they came online. It also meant working through problems independently rather than getting immediate answers, since real-time help wasn't always available.
 
 \vspace{0.3cm}
 
-\textbf{Introducing Bugs While Adding Features:} Like any development work, I occasionally introduced bugs when adding new features. This taught me the importance of thorough testing, code review, and having good debugging strategies. I learned to write more defensive code and to think through the implications of changes before implementing them.
+Not having physical access to the hardware complicated debugging. When the e-ink display produced artifacts or UART communication dropped packets, I couldn't use a logic analyzer or physically inspect connections. Debugging relied on serial console logs and code instrumentation, which was less direct than hands-on hardware access.
 
 \vspace{0.3cm}
 
-\textbf{Remote Communication:} Working remotely with a team in a different time zone presented challenges in communication and coordination. I had to be very clear in my written communication and learn to work independently while keeping the team informed of my progress.
-
-\section{Problem-Solving Approaches}
-
-For the \textbf{e-ink display driver}, I approached the problem systematically:
-
-\begin{enumerate}[itemsep=0.2cm]
-    \item I started by thoroughly researching the hardware specifications to understand exactly how the display needed to be controlled.
-    \item I wrote an initial version of the driver with basic functionality just to test if I could communicate with the display.
-    \item I then iteratively improved the driver, testing each addition to ensure it worked correctly.
-    \item I consulted with my mentors when I encountered issues I couldn't solve on my own.
-\end{enumerate}
-
-\vspace{0.3cm}
-
-For the \textbf{wifi provisioning challenge}, my approach was:
-
-\begin{enumerate}[itemsep=0.2cm]
-    \item I designed a service that would create a temporary access point that users could connect to.
-    \item I built a simple web interface that could be accessed through a phone's browser.
-    \item I conducted extensive testing to handle various scenarios: incorrect passwords, network unavailability, unexpected disconnections, etc.
-    \item I implemented proper state management so the system could recover gracefully from errors.
-\end{enumerate}
-
-\vspace{0.3cm}
-
-Throughout the internship, I learned that the best approach to solving complex problems is to break them down into smaller, manageable pieces, tackle each piece systematically, and test thoroughly at each step.
+As with any development work, I occasionally introduced bugs while adding features. I broke the audio subsystem once by changing the ALSA driver initialization sequence—I hadn't tested all possible startup sequences. Another time I caused a deadlock in the SAM protocol driver that only appeared with specific command ordering. These issues reinforced the importance of thorough edge case testing.
 
 \section{Soft Skills Development}
 
-\textbf{Time Management:} Working 6-8 hours per day on multiple projects taught me how to prioritize tasks, manage my time effectively, and meet deadlines. I learned to estimate how long tasks would take and to communicate clearly when I needed more time.
+The internship also involved developing non-technical skills for remote work.
 
 \vspace{0.3cm}
 
-\textbf{Remote Communication:} Working remotely forced me to improve my written communication skills. I learned to write clear, concise messages on Slack, to document my work properly, and to ask questions effectively when I needed help.
+Time management required juggling multiple projects simultaneously. Working 6-8 hours daily meant prioritizing tasks and communicating timeline changes when needed. Startup priorities shift frequently, requiring context-switching between projects while maintaining progress on each.
 
 \vspace{0.3cm}
 
-\textbf{Independent Problem-Solving:} Since I was working remotely and often on my own, I developed strong independent problem-solving skills. I learned when to persist in solving a problem on my own and when to reach out for help.
+Remote work also involved balancing independent problem-solving with knowing when to ask for help. The key was attempting to solve problems independently first, then asking for help with specific context about what had been tried and where the issue was.
 
 \vspace{0.3cm}
 
-\textbf{Adaptability:} Working in a startup environment taught me to be adaptable. Requirements changed, new priorities emerged, and I had to be flexible in adjusting my work accordingly.
-
-\vspace{0.3cm}
-
-\textbf{Collaboration:} Despite working remotely, I learned to collaborate effectively with my team through code reviews, discussions on design decisions, and regular communication about progress and challenges.
+Working remotely also meant all my communication had to be written and clear. I couldn't rely on quick verbal explanations or sketching something on a whiteboard. I had to get comfortable writing longer Slack messages that explained problems thoroughly, documenting my code properly, and keeping the team updated on progress without being asked.
 
 % --------------------------------------------
 % CHAPTER 5: CONCLUSION
@@ -722,52 +653,50 @@ Throughout the internship, I learned that the best approach to solving complex p
 
 \section{Overall Experience}
 
-My internship at Pamir AI has been an invaluable learning experience. Working on real-world products in a startup environment gave me exposure to the complete software development lifecycle, from initial design to deployment in production devices.
+The internship at Pamir AI provided hands-on experience with production embedded Linux development across multiple hardware platforms.
 
 \vspace{0.3cm}
 
-The opportunity to work directly with the company founders provided me with insights into not just technical development but also product thinking, business strategy, and what it takes to build a successful technology company.
+Working directly with Tianqi and Kevin (the founders) gave me exposure to how a startup operates beyond just the technical work. I saw how product decisions get made, how they prioritize features versus shipping timelines, and the iteration required to build something that works for actual users.
 
 \vspace{0.3cm}
 
-The remote nature of the work, while challenging at times, taught me important skills about self-management, async communication, and working independently. These are skills that will be valuable throughout my career.
+The remote work arrangement had its constraints. Not having physical hardware access meant relying on serial console logs and code instrumentation for debugging. Time zone differences meant most communication happened asynchronously on Slack. This required clear written communication and independent problem-solving.
 
 \vspace{0.3cm}
 
-Working on multiple aspects of the system, from low-level kernel drivers to high-level application code, gave me a holistic understanding of how complex systems are built and maintained.
+The work extended beyond just writing kernel drivers. Debian packaging, documentation, edge case testing, and deployment workflows were significant components. The actual driver code was roughly half the work—the rest was infrastructure to make it production-ready.
 
 \section{Key Achievements}
 
-I am particularly proud of several achievements during this internship:
+Several aspects of this internship stand out as significant accomplishments.
 
-\begin{enumerate}[itemsep=0.3cm]
-    \item \textbf{Complete BSP Development:} I successfully developed complete board support packages for multiple platforms, with proper version control and packaging compliance. This work is now being used in production devices.
+\vspace{0.3cm}
 
-    \item \textbf{Production Deployment:} All the work I did, from kernel drivers to system services, is actively being used in Pamir AI's Distiller devices that are in production. Knowing that my code is running on real devices used by real people is very satisfying.
+All the code I wrote is currently running in production on Distiller devices. The BSP packages for all three platforms (Raspberry Pi CM5, Rockchip RK3568 and RK3576), the kernel drivers, the SDK, and the wifi provisioning service are all deployed and actively used.
 
-    \item \textbf{Multi-Platform Support:} I successfully implemented support for three different hardware platforms (Raspberry Pi CM5, Rockchip RK3568, and RK3576) from a single codebase, demonstrating good software design and abstraction.
+\vspace{0.3cm}
 
-    \item \textbf{Recognition:} My mentors appreciated my dedication and the quality of my work, particularly the custom drivers and the Distiller SDK. This positive feedback validated the effort I put into the work.
-\end{enumerate}
+The multi-platform support work required careful attention to abstraction and design patterns. Supporting three different SoC architectures from a single codebase involved substantial refactoring from the initial platform-specific implementation to a platform-agnostic architecture. The final result was cleaner and more maintainable.
+
+\vspace{0.3cm}
+
+The SAM protocol required multiple iterations to achieve stability under load. The e-ink display driver involved writing support for hardware with no existing Linux driver, which required working through vendor documentation and controller-specific timing requirements.
 
 \section{Future Implications}
 
-The technical skills I gained in Linux kernel development and embedded systems programming form a strong foundation for my future career in software engineering. These are specialized skills that are in high demand and will open up many career opportunities.
+This internship confirmed my interest in systems programming and embedded Linux development. Working at the hardware-kernel interface level aligns with what I find technically engaging.
 
 \vspace{0.3cm}
 
-The experience of working in a remote team environment has prepared me well for the modern software industry, where remote and distributed teams are increasingly common.
+The experience provided insight into production software development. Code quality, comprehensive edge case testing, and thorough documentation are essential for production deployment, not optional additions. The work showed the full scope of what's required to ship production-ready software beyond just functional code.
 
 \vspace{0.3cm}
 
-The exposure to complete product development, including not just coding but also testing, documentation, packaging, and deployment, has given me a comprehensive understanding of what it takes to ship production-quality software.
+I'm continuing with Pamir AI since the internship is ongoing. There's additional work on the Distiller Air platform and other projects. Long-term, I'm interested in pursuing systems programming or embedded development professionally.
 
 \vspace{0.3cm}
 
-Most importantly, this internship has confirmed my interest in systems programming and low-level software development. I now have clarity about the direction I want to take in my career and the confidence that I can succeed in this field.
-
-\vspace{0.3cm}
-
-The professional connections I made at Pamir AI and the real-world experience I gained will be valuable assets as I continue my academic journey and eventually transition into full-time employment.
+The remote work experience provided exposure to async communication and independent work practices, which are common in distributed software engineering teams.
 
 \end{document}

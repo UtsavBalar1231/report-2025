@@ -14,9 +14,9 @@ all: $(PDF_FILE)
 # Compile LaTeX to PDF (run twice for TOC)
 $(PDF_FILE): $(TEX_FILE)
 	@echo "Compiling LaTeX document..."
-	$(LATEX) $(TEX_FILE)
+	$(LATEX) -shell-escape $(TEX_FILE)
 	@echo "Running second pass for table of contents..."
-	$(LATEX) $(TEX_FILE)
+	$(LATEX) -shell-escape $(TEX_FILE)
 	@echo "PDF generated: $(PDF_FILE)"
 
 # Clean auxiliary files
